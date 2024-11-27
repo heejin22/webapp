@@ -1,47 +1,36 @@
-# 그래프 그리기
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
+import numpy as np
+
+st.title('데이터프레임 튜토리얼')
 
 # DataFrame 생성
-data = pd.DataFrame({
-    '이름': ['kim', 'lee', 'park'],
-    '나이': [22, 31, 25],
-    '몸무게': [75.5, 80.2, 55.1]
+dataframe = pd.DataFrame({
+    'first column': [1, 2, 3, 4],
+    'second column': [10, 20, 30, 40],
 })
 
-st.dataframe(data, use_container_width=True)
+# (1) DataFrame
+# use_container_width 기능은 데이터프레임을 컨테이너 크기에 확장할 때 사용합니다. (True/False)
+st.dataframe(dataframe, use_container_width=False)
 
-# 캔버스 만들기
-# 맷플랏립
-# 데이터로 그림 bar chart 그리기
-fig=plt.bar(data['이름'], data['나이'])
-st.pyplot(fig)# 생성된 figure를 그리기
 
-# seaborn 으로 그래프 그리기
-barplot = sns.barplot(x='이름', y='나이', data=data, ax=ax, palette='Set2')
-fig = barplot.get_figure()
-st.pyplot(fig)
+# (2) 테이블(static)
+# DataFrame과는 다르게 interactive 한 UI 를 제공하지 않습니다.
+# 정적이다.
+# interactive 한 UI  : 컬럼을 눌러도 정렬이 되지 않는다.
+# 단순한 데이터 조회용
+st.table(dataframe)
 
-#############
 
-labels = ['G1', 'G2', 'G3', 'G4', 'G5']
-men_means = [20, 35, 30, 35, 27]
-women_means = [25, 32, 34, 20, 25]
-men_std = [2, 3, 4, 1, 2]
-women_std = [3, 5, 2, 3, 3]
-width = 0.35       # the width of the bars: can also be len(x) sequence
+# (3) 메트릭
+st.metric(label="온도", value="10°C", delta="1.2°C")
+st.metric(label="삼성전자", value="61,000 원", delta="-1,200 원")
 
-fig, ax = plt.subplots()
-
-ax.bar(labels, men_means, width, yerr=men_std, label='Men')
-ax.bar(labels, women_means, width, yerr=women_std, bottom=men_means,
-       label='Women')
-
-ax.set_ylabel('Scores')
-ax.set_title('Scores by group and gender')
-ax.legend()
-
-# plt.show() 대신에 스트림릿으로 출력
-st.pyplot(fig)
+# (4) 영역
+# 컬럼으로 영역을 나누어 표기한 경우
+# 컨테이너 영역을 3개로 나눈다.
+col1, col2, col3 = st.columns(3)
+col1.metric(label="달러USD", value="1,228 원", delta="-12.00 원")
+col2.metric(label="일본JPY(100엔)", value="958.63 원", delta="-7.44 원")
+col3.metric(label="유럽연합EUR", value="1,335.82 원", delta="11.44 원")
