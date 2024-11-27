@@ -10,11 +10,8 @@ import seaborn as sns
 # Windows, 리눅스 사용자
 import matplotlib.font_manager as fm
 
-plt.rc("font", family = "Malgun Gothic")
-sns.set(font="Malgun Gothic", rc={"axes.unicode_minus":False}, style='white')
-
-# plt.rcParams['font.family'] = "NanumGothic"
-# plt.rcParams['axes.unicode_minus'] = False
+plt.rcParams['font.family'] = "NanumGothic"
+plt.rcParams['axes.unicode_minus'] = False
 
 
 # DataFrame 생성
