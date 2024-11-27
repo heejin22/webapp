@@ -2,20 +2,22 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-import koreanize_matplotlib
-# import numpy as np
 
+import matplotlib.font_manager as fm
+fm.fontManager.addfont('/Nanum_Gothic/NanumGothic-Bold.ttf')
+plt.rcParams['font.family'] = "NanumGothic-Bold"
+plt.rc('font', family = 'NanumGothic-Bold')
 # 한글 폰트 설정
 # 애플 사용자 
 # plt.rcParams['font.family'] = "AppleGothic"
 # Windows, 리눅스 사용자
 # plt.rcParams['font.family'] = "NanumGothic"
 # plt.rcParams['axes.unicode_minus'] = False
-import matplotlib.font_manager as fm
-import os
-# os.getcwd() #프로젝트 경로 
-fpath = os.path.join(os.getcwd(), 'Nanum_Gothic/NanumGothic-Bold.ttf')
-prop = fm.FontProperties(fname=fpath)
+# import matplotlib.font_manager as fm
+# import os
+# # os.getcwd() #프로젝트 경로 
+# fpath = os.path.join(os.getcwd(), 'Nanum_Gothic/NanumGothic-Bold.ttf')
+# prop = fm.FontProperties(fname=fpath)
 
 
 # DataFrame 생성
@@ -32,7 +34,7 @@ st.dataframe(data, use_container_width=True)
 fig, ax = plt.subplots()
 # 데이터로 그림 bar chart 그리기
 ax.bar(data['이름'], data['나이'])
-ax.set_xlabel(fontproperties=prop)
+
 # 생성된 figure를 그리기 
 st.pyplot(fig)
 
