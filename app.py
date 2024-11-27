@@ -17,7 +17,8 @@ st.dataframe(data, use_container_width=True)
 # 캔버스 만들기
 # 맷플랏립
 # 데이터로 그림 bar chart 그리기
-fig=plt.bar(data['이름'], data['나이'])
+fig= plt.figure()
+plt.bar(data['이름'], data['나이'])
 st.pyplot(fig)# 생성된 figure를 그리기
 
 # seaborn 으로 그래프 그리기
