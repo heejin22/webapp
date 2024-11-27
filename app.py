@@ -22,7 +22,7 @@ plt.bar(data['이름'], data['나이'])
 st.pyplot(fig)# 생성된 figure를 그리기
 
 # seaborn 으로 그래프 그리기
-barplot = sns.barplot(x='이름', y='나이', data=data, ax=ax, palette='Set2')
+barplot = sns.barplot(x='이름', y='나이', data=data, palette='Set2')
 fig = barplot.get_figure()
 st.pyplot(fig)
 
