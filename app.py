@@ -18,7 +18,7 @@ plt.rcParams['axes.unicode_minus'] = False
 
 # DataFrame 생성
 data = pd.DataFrame({
-    'name': ['kim', 'lee', 'park'],
+    'name': ['김', 'lee', 'park'],
     'age': [22, 31, 25],
     'weight': [75.5, 80.2, 55.1]
 })
