@@ -1,41 +1,26 @@
+# 그래프 그리기
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# 한글 폰트 설정
-# 애플 사용자 
-# plt.rcParams['font.family'] = "AppleGothic"
-# Windows, 리눅스 사용자
-plt.rcParams['font.family'] = "NanumGothic"
-plt.rcParams['axes.unicode_minus'] = False
-# import matplotlib.font_manager as fm
-# import os
-# # os.getcwd() #프로젝트 경로 
-# fpath = os.path.join(os.getcwd(), 'Nanum_Gothic/NanumGothic-Bold.ttf')
-# prop = fm.FontProperties(fname=fpath)
-
-
 # DataFrame 생성
 data = pd.DataFrame({
-    'name': ['김', 'lee', 'park'],
-    'age': [22, 31, 25],
-    'weight': [75.5, 80.2, 55.1]
+    '이름': ['kim', 'lee', 'park'],
+    '나이': [22, 31, 25],
+    '몸무게': [75.5, 80.2, 55.1]
 })
 
 st.dataframe(data, use_container_width=True)
 
-# 캔버스 만들기 
+# 캔버스 만들기
 # 맷플랏립
-fig, ax = plt.subplots()
 # 데이터로 그림 bar chart 그리기
-ax.bar(data['name'], data['age'])
-# 생성된 figure를 그리기 
-st.pyplot(fig)
+fig=plt.bar(data['이름'], data['나이'])
+st.pyplot(fig)# 생성된 figure를 그리기
 
-# seaborn 으로 그래프 그리기 
-barplot = sns.barplot(x='name', y='age', data=data, ax=ax, palette='Set2')
-
+# seaborn 으로 그래프 그리기
+barplot = sns.barplot(x='이름', y='나이', data=data, ax=ax, palette='Set2')
 fig = barplot.get_figure()
 st.pyplot(fig)
 
