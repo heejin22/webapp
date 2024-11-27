@@ -11,7 +11,7 @@ data = pd.DataFrame({
     '몸무게': [75.5, 80.2, 55.1]
 })
 
-st.subtitle('나이와 몸무게') 
+st.subheader('서브헤더')
 st.dataframe(data, use_container_width=True)
 
 # 캔버스 만들기
