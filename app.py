@@ -11,22 +11,11 @@ import koreanize_matplotlib
 # Windows, 리눅스 사용자
 # plt.rcParams['font.family'] = "NanumGothic"
 # plt.rcParams['axes.unicode_minus'] = False
-# import matplotlib.font_manager as fm
-# import os
-# os.getcwd() 프로젝트 경로 
-# fpath = os.path.join(os.getcwd(), 'Nanum_Gothic/NanumGothic-Bold.ttf')
-# prop = fm.FontProperties(fname=fpath)
-
+import matplotlib.font_manager as fm
 import os
-import matplotlib.font_manager as fm  # 폰트 관련 용도 as fm
-
-
-@st.cache_data
-font_dirs = [os.getcwd() + '/Nanum_Gothic']
-font_files = fm.findSystemFonts(fontpaths=font_dirs)
-for font_file in font_files:
-    fm.fontManager.addfont(font_file)
-fm._load_fontmanager(try_read_cache=False)
+# os.getcwd() #프로젝트 경로 
+fpath = os.path.join(os.getcwd(), 'Nanum_Gothic/NanumGothic-Bold.ttf')
+prop = fm.FontProperties(fname=fpath)
 
 
 # DataFrame 생성
@@ -43,11 +32,13 @@ st.dataframe(data, use_container_width=True)
 fig, ax = plt.subplots()
 # 데이터로 그림 bar chart 그리기
 ax.bar(data['이름'], data['나이'])
+ax.set_xlabel(fontproperties=prop)
 # 생성된 figure를 그리기 
 st.pyplot(fig)
 
 # seaborn 으로 그래프 그리기 
 barplot = sns.barplot(x='이름', y='나이', data=data, ax=ax, palette='Set2')
+
 fig = barplot.get_figure()
 st.pyplot(fig)
 
