@@ -2,16 +2,17 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import koreanize_matplotlib
 # import numpy as np
 
 # 한글 폰트 설정
 # 애플 사용자 
 # plt.rcParams['font.family'] = "AppleGothic"
 # Windows, 리눅스 사용자
-import matplotlib.font_manager as fm
+# import matplotlib.font_manager as fm
 
-plt.rcParams['font.family'] = "NanumGothic"
-plt.rcParams['axes.unicode_minus'] = False
+# plt.rcParams['font.family'] = "NanumGothic"
+# plt.rcParams['axes.unicode_minus'] = False
 
 
 # DataFrame 생성
