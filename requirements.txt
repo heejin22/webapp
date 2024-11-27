@@ -1,2 +1,3 @@
 matplotlib
 seaborn
+koreanize_matplotlib
