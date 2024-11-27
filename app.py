@@ -3,16 +3,12 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-import matplotlib.font_manager as fm
-fm.fontManager.addfont('/Nanum_Gothic/NanumGothic-Bold.ttf')
-plt.rcParams['font.family'] = "NanumGothic-Bold"
-plt.rc('font', family = 'NanumGothic-Bold')
 # 한글 폰트 설정
 # 애플 사용자 
 # plt.rcParams['font.family'] = "AppleGothic"
 # Windows, 리눅스 사용자
-# plt.rcParams['font.family'] = "NanumGothic"
-# plt.rcParams['axes.unicode_minus'] = False
+plt.rcParams['font.family'] = "NanumGothic"
+plt.rcParams['axes.unicode_minus'] = False
 # import matplotlib.font_manager as fm
 # import os
 # # os.getcwd() #프로젝트 경로 
@@ -22,9 +18,9 @@ plt.rc('font', family = 'NanumGothic-Bold')
 
 # DataFrame 생성
 data = pd.DataFrame({
-    '이름': ['영식', '철수', '영희'],
-    '나이': [22, 31, 25],
-    '몸무게': [75.5, 80.2, 55.1]
+    'name': ['kim', 'lee', 'park'],
+    'age': [22, 31, 25],
+    'weight': [75.5, 80.2, 55.1]
 })
 
 st.dataframe(data, use_container_width=True)
@@ -33,13 +29,12 @@ st.dataframe(data, use_container_width=True)
 # 맷플랏립
 fig, ax = plt.subplots()
 # 데이터로 그림 bar chart 그리기
-ax.bar(data['이름'], data['나이'])
-
+ax.bar(data['name'], data['age'])
 # 생성된 figure를 그리기 
 st.pyplot(fig)
 
 # seaborn 으로 그래프 그리기 
-barplot = sns.barplot(x='이름', y='나이', data=data, ax=ax, palette='Set2')
+barplot = sns.barplot(x='name', y='age', data=data, ax=ax, palette='Set2')
 
 fig = barplot.get_figure()
 st.pyplot(fig)
